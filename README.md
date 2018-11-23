@@ -9,6 +9,7 @@ roundCoordinates(feature, digits)
 Takes a feature and rounds the coordinates of the feature to the specified digits.
 
 | Argument | Type    | Description                                   |
+|:---------|:--------|:----------------------------------------------|
 | feature  | Feature | Feature to round its coordinates              |
 | digits   | Integer | Optinal, number of digits after decimal point |
 
