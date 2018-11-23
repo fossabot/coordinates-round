@@ -1,0 +1,26 @@
+{
+  "name": "RoundCoordinates",
+  "version": "1.0.0",
+  "description": "Script to round coordinates of input feature to the number of given digits",
+  "main": "round-coord",
+  "nyc": {
+    "include": [
+      "src/**/*.js"
+    ]
+  },
+  "scripts": {
+    "test": "nyc --all --reporter=html --reporter=text --reporter=lcov mocha",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "author": "Yousaf Azabi",
+  "license": "MIT",
+  "dependencies": {
+    "@turf/line-overlap": "^6.0.2",
+    "@turf/turf": "^5.1.6",
+    "mocha": "^5.2.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "nyc": "^13.1.0"
+  }
+}
