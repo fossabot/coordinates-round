@@ -1,3 +1,5 @@
+<a href='https://coveralls.io/github/YousafAzabi/coordinates-round?branch=master'><img src='https://coveralls.io/repos/github/YousafAzabi/coordinates-round/badge.svg?branch=master' alt='Coverage Status' /></a>
+
 # Round Coordinates
 
 Script to round coordinates of input feature to the given digits.
