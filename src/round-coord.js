@@ -22,7 +22,6 @@ exports.roundCoordinates = (feature, digits = 7) => {
       })
     );
   }
-
   return feature; //return rounded coordinates
 }
 
