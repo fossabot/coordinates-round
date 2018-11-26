@@ -7,13 +7,19 @@ exports.roundCoordinates = (feature, digits = 7) => {
   if (geometry.type == 'Point') {
     geometry.coordinates[0] = round(geometry.coordinates[0], digits);
     geometry.coordinates[1] = round(geometry.coordinates[1], digits);
-  } else if (geometry.type == 'LineString' || geometry.type == 'MultiPoint') {
+  } else if (geometry.type === 'LineString' || geometry.type === 'MultiPoint') {
     //check geometry type if LineString call loop fn once
      geometry.coordinates = loop(geometry.coordinates, digits);
-  } else if (geometry.type == 'MultiLineString' || geometry.type == 'Polygon') {
+  } else if (geometry.type === 'MultiLineString' || geometry.type === 'Polygon') {
     //if type MultiLineString call loop fn for each element
     geometry.coordinates.forEach( coordinate =>
       coordinates.push(loop(coordinate, digits))
+    );
+  } else if (geometry.type === 'MultiPolygon') {
+    geometry.coordinates.forEach( array =>
+      array.forEach( coordinate => {
+        coordinates.push(loop(coordinate, digits))
+      })
     );
   }
 
@@ -28,7 +34,6 @@ loop = (coordinates, digits) => {
   }
   return coordinates; //return rounded coordinates
 }
-
 
 //================== function to round numbers  ======================
 round = (n, d) => {
