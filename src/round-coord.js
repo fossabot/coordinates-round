@@ -4,17 +4,16 @@
 exports.roundCoordinates = (feature, digits = 7) => {
   let coordinates = []; //declare coordinates array as empty
   let geometry = feature.geometry; //
-  if (geometry.type == 'LineString') {
+  if (geometry.type == 'LineString' || geometry.type == 'MultiPoint') {
     //check geometry type if LineString call loop fn once
-     coordinates = loop(geometry.coordinates, digits);
-  } else if (geometry.type == 'MultiLineString') {
+     geometry.coordinates = loop(geometry.coordinates, digits);
+  } else if (geometry.type == 'MultiLineString' || geometry.type == 'Polygon') {
     //if type MultiLineString call loop fn for each element
     geometry.coordinates.forEach( coordinate =>
       coordinates.push(loop(coordinate, digits))
     );
   } 
 
-  feature.geometry.coordinates = coordinates;
   return feature; //return rounded coordinates
 }
 
